@@ -23,10 +23,3 @@ self.addEventListener('fetch', function(e) {
     })
   );
 });
-
-
-
-
-
-
-curl "https://api.openweathermap.org/data/2.5/weather?q=Budapest&appid=a457e758ed0d9ab3fcc40xxxe&units=metric"
