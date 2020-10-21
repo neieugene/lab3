@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Hello World</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="images/hello-icon-152.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +14,43 @@
   <meta name="apple-mobile-web-app-title" content="Hello World">
   <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
   <meta name="msapplication-TileColor" content="#FFFFFF">
+  <script type="text/javascript">
+    function httpGet(theUrl)
+      {
+          var xmlHttp = new XMLHttpRequest();
+          xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+          xmlHttp.send( null );
+          return xmlHttp.responseText;
+      }
+
+    function update_weather(){
+      let data =JSON.parse(httpGet('https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=d2fd93999fb7e9f7be33e12863ff9c57&units=metric'));
+      var weather = document.getElementById('1');
+      var temp = document.getElementById('2');
+      var temp2 = document.getElementById('3');
+      var speed = document.getElementById('4');
+      var time = document.getElementById('5');
+      weather.textContent = 'Погода: ' + data.weather[0].description;
+      temp.textContent = 'Температура: ' + data.main.temp + ' ℃'
+      temp2.textContent = 'Температура по ощущению: ' + data.main.feels_like + ' ℃'
+      speed.textContent = 'Скорость ветра: ' + data.wind.speed + ' м/c'
+      time.textContent = 'Время:' + new Date(Date.now()).toLocaleTimeString("en-US")
+    }
+  </script>
 </head>
 <body class="fullscreen">
   <div class="container">
-    <h1 class="title">Hello World!</h1>
+    <h1 class="title">Погода в минске</h1>
+    <h2 id='1'>Погода:</h2>
+    <h2 id='2'>Температура:</h2>
+    <h2 id='3'>Температура по ощущению:</h2>
+    <h2 id='4'>Скорость ветра:</h2>
+    <h2 id='5'>Время:</h2>
   </div>
+
+  <button onclick="update_weather()">
+    Обновить
+  </button>
   <script src="js/main.js"></script>
 </body>
 </html>
