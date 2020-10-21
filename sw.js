@@ -1,9 +1,9 @@
 var cacheName = 'lab3';
 var filesToCache = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/main.js'
+  '/lab3/',
+  '/lab3/index.html',
+  '/lab3/css/style.css',
+  '/lab3/js/main.js'
 ];
 
 /* Start the service worker and cache all of the app's content */
@@ -23,3 +23,10 @@ self.addEventListener('fetch', function(e) {
     })
   );
 });
+
+
+
+
+
+
+curl "https://api.openweathermap.org/data/2.5/weather?q=Budapest&appid=a457e758ed0d9ab3fcc40xxxe&units=metric"
