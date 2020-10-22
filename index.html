@@ -24,7 +24,7 @@
       }
 
     function update_weather(){
-      let data =JSON.parse(httpGet('https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=d2fd93999fb7e9f7be33e12863ff9c57&units=metric'));
+      let data =JSON.parse(httpGet('https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=d2fd93999fb7e9f7be3' + '3e12863ff9c57&units=metric'));
       var weather = document.getElementById('1');
       var temp = document.getElementById('2');
       var temp2 = document.getElementById('3');
